@@ -1,6 +1,9 @@
 <template>
   <div class="ingredient-item">
-      <p>{{ ingredient.name }}</p>
+      <div>
+        <p class="name">{{ ingredient.name }}</p>
+        <p class="category">{{ ingredient.category.name }}</p>
+      </div>
       <div class="icon-action">
           <img
             src="../assets/pym-iconUpdate.png" 
@@ -33,6 +36,15 @@ export default {
   }
   p {
       font-size: 18px;
+  }
+  .name {
+      text-transform: capitalize;
+      margin-bottom: 0.5em;
+  }
+  .category {
+      color: #F38E69;
+      font-size: 16px;
+      margin-top: 0;
   }
   .icon-action {
     display: flex;
