@@ -3,25 +3,33 @@
     <router-view/>
     <btn-add-new/>
     <category-item v-for="c, idx in categories" :key="idx" :category="c"/>
+    <ingredient-item v-for="i, idx in ingredients" :key="idx" :ingredient="i"/>
   </div>
 </template>
 
 <script>
 import BtnAddNew from './components/BtnAddNew.vue'
 import CategoryItem from './components/CategoryItem.vue'
+import IngredientItem from './components/IngredientItem.vue'
 export default {
-  components: { CategoryItem, BtnAddNew },
+  components: { CategoryItem, BtnAddNew, IngredientItem },
   name: 'App',
   async mounted () {
     fetch('http://localhost:8741/api/categories').then((response) => {
       this.categories = response.json().then(json => {
         this.categories = json['hydra:member']
       })
+    }),
+    fetch('http://localhost:8741/api/ingredients').then((response) => {
+      this.ingredients = response.json().then(json => {
+        this.ingredients = json['hydra:member']
+      })
     })
   },
   data () {
     return {
-      categories: []
+      categories: [],
+      ingredients: []
     }
   }
 }
