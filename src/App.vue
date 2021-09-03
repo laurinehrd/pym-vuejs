@@ -2,8 +2,12 @@
   <div id="app">
     <router-view/>
     <btn-add-new/>
-    <category-item v-for="c, idx in categories" :key="idx" :category="c"/>
-    <ingredient-item v-for="i, idx in ingredients" :key="idx" :ingredient="i"/>
+    <div>
+      <category-item v-for="c, idx in categories" :key="idx" :category="c"/>
+    </div>
+    <div>
+      <ingredient-item v-for="i, idx in ingredients" :key="idx" :ingredient="i"/>
+    </div>
   </div>
 </template>
 
@@ -19,7 +23,7 @@ export default {
       this.categories = response.json().then(json => {
         this.categories = json['hydra:member']
       })
-    }),
+    })
     fetch('http://localhost:8741/api/ingredients').then((response) => {
       this.ingredients = response.json().then(json => {
         this.ingredients = json['hydra:member']
