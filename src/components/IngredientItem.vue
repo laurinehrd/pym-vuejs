@@ -24,7 +24,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .ingredient-item {
     background-color: #FCE9E1;
@@ -35,23 +34,24 @@ export default {
     margin: 1rem 0;
   }
   p {
-      font-size: 18px;
+    font-size: 18px;
   }
   .name {
-      text-transform: capitalize;
-      margin-bottom: 0.5em;
+    text-transform: capitalize;
+    margin-bottom: 0.5em;
   }
   .category {
-      color: #F38E69;
-      font-size: 16px;
-      margin-top: 0;
+    color: #F38E69;
+    font-size: 16px;
+    margin-top: 0;
+    text-transform: lowercase;
   }
   .icon-action {
     display: flex;
     align-items: center;
   }
   img {
-      padding: 0 0.5rem;
-      cursor: pointer;
+    padding: 0 0.5rem;
+    cursor: pointer;
   }
 </style>

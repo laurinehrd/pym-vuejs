@@ -32,15 +32,15 @@ export default {
     margin: 1rem 0;
   }
   p {
-      font-size: 18px;
-      text-transform: capitalize;
+    font-size: 18px;
+    text-transform: capitalize;
   }
   .icon-action {
     display: flex;
     align-items: center;
   }
   img {
-      padding: 0 0.5rem;
-      cursor: pointer;
+    padding: 0 0.5rem;
+    cursor: pointer;
   }
 </style>
