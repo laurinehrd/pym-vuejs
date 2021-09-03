@@ -33,6 +33,7 @@ export default {
   }
   p {
       font-size: 18px;
+      text-transform: capitalize;
   }
   .icon-action {
     display: flex;
