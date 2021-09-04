@@ -12,10 +12,10 @@
             src="../assets/seemore.png"
             alt="see more">
           <img
-            src="../assets/pym-iconUpdate.png" 
+            src="../assets/pym-iconUpdate.png"
             alt="update">
           <img
-            src="../assets/pym-iconDelete.png" 
+            src="../assets/pym-iconDelete.png"
             alt="delete">
       </div>
   </div>
@@ -44,6 +44,7 @@ export default {
   }
   .img-default {
     margin-right: 1rem;
+    cursor: unset;
   }
   p {
     font-size: 18px;
