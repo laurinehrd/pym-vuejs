@@ -4,66 +4,36 @@
       <div class="logo">
         <h1>Pym</h1>
       </div>
-      <menu-item menu="Ingrédients"/>
-      <menu-item menu="Plats"/>
-      <menu-item menu="Catégories"/>
+      <router-link to="/"><menu-item menu="Plats"/></router-link>
+      <router-link to="/ingredients"><menu-item menu="Ingrédients"/></router-link>
+      <router-link to="/categories"><menu-item menu="Catégories"/></router-link>
     </div>
     <div class="main">
-      <category-item v-for="c, idx in categories" :key="idx" :category="c"/>
+      <router-view/>
     </div>
-    <!-- <router-view/> -->
-    <!-- <btn-add-new/> -->
-    <!-- <div>
-      <category-item v-for="c, idx in categories" :key="idx" :category="c"/>
-    </div>
-    <div>
-      <ingredient-item v-for="i, idx in ingredients" :key="idx" :ingredient="i"/>
-    </div>
-    <div>
-      <meal-item v-for="m, idx in meals" :key="idx" :meal="m"/>
-    </div> -->
   </div>
 </template>
 
 <script>
 import BtnAddNew from './components/BtnAddNew.vue'
 import CategoryItem from './components/CategoryItem.vue'
+import CategorySection from './components/CategorySection.vue'
 import IngredientItem from './components/IngredientItem.vue'
 import MealItem from './components/MealItem.vue'
 import MenuItem from './components/MenuItem.vue'
 export default {
-  components: { CategoryItem, BtnAddNew, IngredientItem, MealItem, MenuItem },
-  name: 'App',
-  async mounted () {
-    fetch('http://localhost:8741/api/categories').then((response) => {
-      this.categories = response.json().then(json => {
-        this.categories = json['hydra:member']
-      })
-    })
-    fetch('http://localhost:8741/api/ingredients').then((response) => {
-      this.ingredients = response.json().then(json => {
-        this.ingredients = json['hydra:member']
-      })
-    })
-    fetch('http://localhost:8741/api/meals').then((response) => {
-      this.meals = response.json().then(json => {
-        this.meals = json['hydra:member']
-      })
-    })
-  },
-  data () {
-    return {
-      categories: [],
-      ingredients: [],
-      meals: []
-    }
-  }
+  components: { CategoryItem, BtnAddNew, IngredientItem, MealItem, MenuItem, CategorySection },
+  name: 'App'
 }
 </script>
 
 <style>
 body {
   margin: 1rem;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 /* Stylisation scrollbar : Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
