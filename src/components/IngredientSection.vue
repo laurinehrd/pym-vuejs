@@ -1,6 +1,6 @@
 <template>
     <div>
-        <btn-add-new/>
+        <btn-add-new btn="un nouvel ingrédient"/>
         <ingredient-item v-for="i, idx in ingredients" :key="idx" :ingredient="i"/>
     </div>
 </template>

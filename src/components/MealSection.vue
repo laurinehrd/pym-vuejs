@@ -1,6 +1,6 @@
 <template>
     <div>
-        <btn-add-new/>
+        <btn-add-new btn="un nouveau plat"/>
         <meal-item v-for="m, idx in meals" :key="idx" :meal="m"/>
     </div>
 </template>

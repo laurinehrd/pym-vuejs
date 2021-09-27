@@ -1,17 +1,15 @@
 <template>
   <button>
       <img src="../assets/pym-iconMore.png" alt="more">
-      Ajouter {{ message }}
+      <p>Ajouter {{ btn }}</p>
   </button>
 </template>
 
 <script>
 export default {
   name: 'BtnAddNew',
-  data () {
-    return {
-      message: 'une nouvelle catégorie'
-    }
+  props: {
+    btn: String
   }
 }
 </script>
@@ -37,6 +35,9 @@ export default {
   }
   img {
       margin-right: 0.5rem;
+  }
+  p {
+    margin: 0;
   }
 
 </style>

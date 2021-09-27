@@ -1,6 +1,6 @@
 <template>
     <div>
-        <btn-add-new/>
+        <btn-add-new btn="une nouvelle catégorie"/>
         <category-item v-for="c, idx in categories" :key="idx" :category="c"/>
     </div>
 </template>
