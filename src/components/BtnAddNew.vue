@@ -24,6 +24,8 @@ export default {
       font-weight: bold;
       font-size: 18px;
       padding: 1rem;
+      margin-left: auto;
+      margin-bottom: 2rem;
       display: flex;
       align-items: center;
       font-family: 'Gilroy';
