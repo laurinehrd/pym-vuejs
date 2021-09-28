@@ -3,19 +3,19 @@
       <div class="name-meal">
         <img
             class="img-default"
-            src="../assets/pym-logo-imgdefault.png"
+            src="static/assets/pym-logo-imgdefault.png"
             alt="img default">
         <p class="name">{{ meal.name }}</p>
       </div>
       <div class="icon-action">
           <img
-            src="../assets/seemore.png"
+            src="static/assets/seemore.png"
             alt="see more">
           <img
-            src="../assets/pym-iconUpdate.png"
+            src="static/assets/pym-iconUpdate.png"
             alt="update">
           <img
-            src="../assets/pym-iconDelete.png"
+            src="static/assets/pym-iconDelete.png"
             alt="delete">
       </div>
   </div>

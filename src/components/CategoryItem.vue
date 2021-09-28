@@ -3,10 +3,10 @@
       <p>{{ category.name }}</p>
       <div class="icon-action">
           <img
-            src="../assets/pym-iconUpdate.png"
+            src="static/assets/pym-iconUpdate.png"
             alt="update">
           <img
-            src="../assets/pym-iconDelete.png"
+            src="static/assets/pym-iconDelete.png"
             alt="delete">
       </div>
   </div>

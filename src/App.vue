@@ -4,9 +4,9 @@
       <div class="logo">
         <h1>Pym</h1>
       </div>
-      <router-link to="/"><menu-item menu="Plats"/></router-link>
-      <router-link to="/ingredients"><menu-item menu="Ingrédients"/></router-link>
-      <router-link to="/categories"><menu-item menu="Catégories"/></router-link>
+      <router-link to="/"><menu-item menu="Plats" nameIcon="meal"/></router-link>
+      <router-link to="/ingredients"><menu-item menu="Ingrédients" nameIcon="ingredient"/></router-link>
+      <router-link to="/categories"><menu-item menu="Catégories" nameIcon="category"/></router-link>
     </div>
     <div class="main">
       <router-view/>

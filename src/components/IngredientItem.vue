@@ -6,10 +6,10 @@
       </div>
       <div class="icon-action">
           <img
-            src="../assets/pym-iconUpdate.png"
-            alt="update">
+            src="static/assets/pym-iconUpdate.png"
+            alt="update" v-on:click="update">
           <img
-            src="../assets/pym-iconDelete.png"
+            src="static/assets/pym-iconDelete.png"
             alt="delete">
       </div>
   </div>
@@ -20,6 +20,11 @@ export default {
   name: 'IngredientItem',
   props: {
     ingredient: Object
+  },
+  methods: {
+    update: function () {
+      alert('coucou')
+    }
   }
 }
 </script>

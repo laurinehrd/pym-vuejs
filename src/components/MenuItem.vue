@@ -1,9 +1,7 @@
 <template>
   <div class="menu-item">
       <div class="icon">
-          <img
-            src="../assets/icon-ingredient.png"
-            alt="icon">
+          <img :src="`/static/assets/icon-${nameIcon}.png`">
       </div>
       <p>{{ menu }}</p>
   </div>
@@ -13,7 +11,8 @@
 export default {
   name: 'MenuItem',
   props: {
-    menu: String
+    menu: String,
+    nameIcon: String
   }
 }
 </script>

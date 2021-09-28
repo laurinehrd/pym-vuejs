@@ -1,6 +1,6 @@
 <template>
   <button>
-      <img src="../assets/pym-iconMore.png" alt="more">
+      <img src="static/assets/pym-iconMore.png" alt="more">
       <p>Ajouter {{ btn }}</p>
   </button>
 </template>
