@@ -54,17 +54,17 @@ p {
   stroke: #4F4F4F;
   margin-right: 0.5rem;
 }
-.ingredient, .category {
+svg.ingredient, svg.category {
   fill: #4F4F4F;
   margin-right: 0.5rem;
 }
-.category {
+svg.category {
   margin-right: 1rem;
 }
-.menu-item:hover .meal {
+.menu-item:hover svg.meal {
   stroke: white;
 }
-.menu-item:hover .ingredient, .menu-item:hover .category {
+.menu-item:hover svg.ingredient, .menu-item:hover svg.category {
   fill: white;
 }
 </style>
