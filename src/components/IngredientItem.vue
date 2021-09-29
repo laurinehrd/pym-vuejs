@@ -7,7 +7,7 @@
       <div class="icon-action">
           <img
             src="static/assets/pym-iconUpdate.png"
-            alt="update" v-on:click="update">
+            alt="update" v-on:click="updateIngredient">
           <img
             src="static/assets/pym-iconDelete.png"
             alt="delete">
@@ -22,8 +22,9 @@ export default {
     ingredient: Object
   },
   methods: {
-    update: function () {
+    updateIngredient: function () {
       alert('coucou')
+      this.ingredient.name = 'test'
     }
   }
 }
