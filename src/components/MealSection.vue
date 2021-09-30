@@ -1,6 +1,6 @@
 <template>
   <div>
-      <btn-add-new btn="un nouveau plat"/>
+      <btn-add-new btn="un nouveau plat" @click="goAdd()"/>
       <meal-item v-for="m, idx in meals" :key="idx" :meal="m"/>
   </div>
 </template>
@@ -24,6 +24,11 @@ export default {
   data () {
     return {
       meals: []
+    }
+  },
+  methods: {
+    goAdd () {
+      this.$router.push('/newmeal')
     }
   }
 }
