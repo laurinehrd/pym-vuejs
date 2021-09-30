@@ -5,6 +5,7 @@ import CategorySection from '@/components/CategorySection'
 import MealSection from '@/components/MealSection'
 import NewIngredient from '@/components/NewIngredient'
 import NewCategory from '@/components/NewCategory'
+import NewMeal from '@/components/NewMeal'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/newcategory',
       name: 'NewCategory',
       component: NewCategory
+    },
+    {
+      path: '/newmeal',
+      name: 'NewMeal',
+      component: NewMeal
     }
   ]
 })
