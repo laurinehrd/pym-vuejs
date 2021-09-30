@@ -2,20 +2,29 @@
   <div>
       <h2>Ajouter une nouvelle catégorie</h2>
       <p>Nom de la catégorie</p>
-      <input type="text">
+      <input type="text" v-model="name">
       <div class="btn">
         <button class="cancel" @click="goBack()">Annuler</button>
-        <button class="add">Ajouter</button>
+        <button class="add" @click="add()">Ajouter</button>
       </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   methods: {
     goBack () {
     //   this.$router.push('/categories')
       this.$router.go(-1)
+    },
+    add () {
+      console.log(this.name)
+      axios.post('http://localhost:8741/api/categories', {
+        name: this.name
+      })
+        .then(() => this.goBack())
     }
   }
 }
