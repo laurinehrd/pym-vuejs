@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import IngredientSection from '@/components/IngredientSection'
 import CategorySection from '@/components/CategorySection'
 import MealSection from '@/components/MealSection'
+import NewIngredient from '@/components/NewIngredient'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/',
       name: 'MealSection',
       component: MealSection
+    },
+    {
+      path: '/newingredient',
+      name: 'NewIngredient',
+      component: NewIngredient
     }
   ]
 })
