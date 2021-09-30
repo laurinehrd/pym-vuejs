@@ -1,20 +1,22 @@
 <template>
   <div>
-      <h2>Ajouter un nouvel ingrédient</h2>
-      <p>Nom de l'ingrédient</p>
-      <input type="text">
-      <p>Catégorie de l'ingrédient</p>
-      <select name="category" id="category">
-          <option v-for="c, idx in categories" :key="idx" :category="c" value="">{{ categories['name'] }}</option>
-      </select>
-      <div class="btn">
-        <button class="cancel" @click="goBack()">Annuler</button>
-        <button class="add">Ajouter</button>
-        </div>
+    <h2>Ajouter un nouvel ingrédient</h2>
+    <p>Nom de l'ingrédient</p>
+    <input type="text" v-model="name">
+    <p>Catégorie de l'ingrédient</p>
+    <select name="category" id="category" v-model="idCat">
+        <option v-for="c, idx in categories" :key="idx" :category="c" :value="c['@id']">{{ c.name }}</option>
+    </select>
+    <div class="btn">
+      <button class="cancel" @click="goBack()">Annuler</button>
+      <button class="add" @click="add()">Ajouter</button>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'newIngredient',
   async mounted () {
@@ -26,12 +28,23 @@ export default {
   },
   data () {
     return {
-      categories: []
+      categories: [],
+      name: '',
+      idCat: 0
     }
   },
   methods: {
     goBack () {
       this.$router.push('/ingredients')
+    },
+    add () {
+      console.log(this.name)
+      console.log(this.idCat)
+      axios.post('http://localhost:8741/api/ingredients', {
+        name: this.name,
+        category: this.idCat
+      })
+        .then(() => this.goBack())
     }
   }
 }
@@ -87,5 +100,6 @@ export default {
   }
   .btn button.cancel:hover {
     border: 1px solid black;
+    transition: ease-in-out all 0.2s;
   }
 </style>
