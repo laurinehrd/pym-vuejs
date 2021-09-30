@@ -6,7 +6,7 @@
       <div class="btn">
         <button class="cancel" @click="goBack()">Annuler</button>
         <button class="add">Ajouter</button>
-        </div>
+      </div>
   </div>
 </template>
 
@@ -14,7 +14,8 @@
 export default {
   methods: {
     goBack () {
-      this.$router.push('/categories')
+    //   this.$router.push('/categories')
+      this.$router.go(-1)
     }
   }
 }
@@ -67,5 +68,6 @@ export default {
   }
   .btn button.cancel:hover {
     border: 1px solid black;
+    transition: ease-in-out all 0.2s;
   }
 </style>
