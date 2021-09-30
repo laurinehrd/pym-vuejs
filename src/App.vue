@@ -21,8 +21,9 @@ import CategorySection from './components/CategorySection.vue'
 import IngredientItem from './components/IngredientItem.vue'
 import MealItem from './components/MealItem.vue'
 import MenuItem from './components/MenuItem.vue'
+import NewIngredient from './components/NewIngredient.vue'
 export default {
-  components: { CategoryItem, BtnAddNew, IngredientItem, MealItem, MenuItem, CategorySection },
+  components: { CategoryItem, BtnAddNew, IngredientItem, MealItem, MenuItem, CategorySection, NewIngredient },
   name: 'App'
 }
 </script>
