@@ -19,7 +19,15 @@
             <div class="info">
                 <div class="name">
                     <p>Nom :</p>
-                    
+                    <Dropdown v-for="i, idx in ingredients" :key="idx" :category="i" :value="i['@id']"
+                        :options="[{ id: i.id, name: i.name }]"
+                        v-on:selected="validateSelection"
+                        v-on:filter="getDropdownValues"
+                        :disabled="false"
+                        name="ingredients"
+                        :maxItem="10"
+                        placeholder="Nom de l'ingrédient">
+                    </Dropdown>
                 </div>
                 <div class="quantity">
                     <p>Quantité :</p>
@@ -35,8 +43,23 @@
 </template>
 
 <script>
+import Dropdown from 'vue-simple-search-dropdown'
+
 export default {
   name: 'newMeal',
+  components: { Dropdown },
+  async mounted () {
+    fetch('http://localhost:8741/api/ingredients').then((response) => {
+      this.ingredients = response.json().then(json => {
+        this.ingredients = json['hydra:member']
+      })
+    })
+  },
+  data () {
+    return {
+      ingredients: []
+    }
+  },
   methods: {
     goBack () {
       this.$router.push('/')
