@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import IngredientItem from '../components/IngredientItem.vue'
-import BtnAddNew from '../components/BtnAddNew.vue'
+import IngredientItem from '../items/IngredientItem.vue'
+import BtnAddNew from '../BtnAddNew.vue'
 
 export default {
   components: {

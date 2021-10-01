@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import CategoryItem from '../components/CategoryItem.vue'
-import BtnAddNew from '../components/BtnAddNew.vue'
+import CategoryItem from '../items/CategoryItem.vue'
+import BtnAddNew from '../BtnAddNew.vue'
 
 export default {
   components: {

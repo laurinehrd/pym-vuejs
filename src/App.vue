@@ -16,11 +16,11 @@
 
 <script>
 import BtnAddNew from './components/BtnAddNew.vue'
-import CategoryItem from './components/CategoryItem.vue'
-import CategorySection from './components/CategorySection.vue'
-import IngredientItem from './components/IngredientItem.vue'
-import MealItem from './components/MealItem.vue'
-import MenuItem from './components/MenuItem.vue'
+import CategoryItem from './components/items/CategoryItem.vue'
+import CategorySection from './components/sections/CategorySection.vue'
+import IngredientItem from './components/items/IngredientItem.vue'
+import MealItem from './components/items/MealItem.vue'
+import MenuItem from './components/items/MenuItem.vue'
 import NewIngredient from './components/NewIngredient.vue'
 export default {
   components: { CategoryItem, BtnAddNew, IngredientItem, MealItem, MenuItem, CategorySection, NewIngredient },

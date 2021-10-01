@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import MealItem from '../components/MealItem.vue'
-import BtnAddNew from '../components/BtnAddNew.vue'
+import MealItem from '../items/MealItem.vue'
+import BtnAddNew from '../BtnAddNew.vue'
 
 export default {
   components: {
