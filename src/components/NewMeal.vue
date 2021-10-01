@@ -31,6 +31,7 @@
                 </div>
                 <div class="quantity">
                     <p>Quantité :</p>
+                    <quantity></quantity>
                 </div>
             </div>
         </div>
@@ -44,10 +45,11 @@
 
 <script>
 import Dropdown from 'vue-simple-search-dropdown'
+import Quantity from './Quantity.vue'
 
 export default {
   name: 'newMeal',
-  components: { Dropdown },
+  components: { Dropdown, Quantity },
   async mounted () {
     fetch('http://localhost:8741/api/ingredients').then((response) => {
       this.ingredients = response.json().then(json => {
