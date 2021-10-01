@@ -3,35 +3,38 @@
     <h2>Ajouter un nouveau plat</h2>
     <div class="line">
         <div class="nameMeal">
-            <p>Nom du plat</p>
+            <p class="title">Nom du plat</p>
             <input class="bg" type="text">
         </div>
         <div class="button-wrapper">
-            <p>Choisir une image</p>
+            <p class="title">Choisir une image</p>
             <div class="label">Importer</div>
             <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File">
         </div>
     </div>
     <div class="section-ing">
-        <p>Les ingrédients du plat</p>
+        <p class="title">Les ingrédients du plat</p>
         <div class="item">
             <p class="ingN">Ingrédient 1</p>
             <div class="info">
                 <div class="name">
                     <p>Nom :</p>
-                    <Dropdown v-for="i, idx in ingredients" :key="idx" :category="i" :value="i['@id']"
-                        :options="[{ id: i.id, name: i.name }]"
-                        v-on:selected="validateSelection"
-                        v-on:filter="getDropdownValues"
+                    <Dropdown
+                        :options="ingredients"
+                        @selected="i=>currentIngredient=i"
                         :disabled="false"
                         name="ingredients"
                         :maxItem="10"
                         placeholder="Nom de l'ingrédient">
                     </Dropdown>
+                    <div class="name-category">
+                      <p class="category">Catégorie : </p>
+                      <p>{{ currentIngredient.category? currentIngredient.category.name : ''}}</p>
+                    </div>
                 </div>
                 <div class="quantity">
                     <p>Quantité :</p>
-                    <quantity></quantity>
+                    <quantity v-model="quantity"></quantity>
                 </div>
             </div>
         </div>
@@ -59,7 +62,9 @@ export default {
   },
   data () {
     return {
-      ingredients: []
+      ingredients: [],
+      currentIngredient: {},
+      quantity: {number: 20, unit: 3}
     }
   },
   methods: {
@@ -71,8 +76,9 @@ export default {
 </script>
 
 <style scoped>
-  p {
+  .title {
     text-transform: uppercase;
+    font-size: 18px;
   }
   h2 {
     margin-bottom: 3rem;
@@ -136,6 +142,7 @@ export default {
     text-decoration: underline;
     font-weight: bold;
     margin-top: 0;
+    font-size: 18px;
 }
 .info {
     display: flex;
@@ -143,13 +150,15 @@ export default {
 .name, .quantity {
     width: 50%;
 }
-.name p, .quantity p {
-    text-transform: inherit;
-}
 
-  select {
-    width: 20%;
+.name-category {
+    display: flex;
   }
+  .category {
+    text-transform: uppercase!important;
+    padding-right: 0.3rem;
+  }
+
   .btn {
     text-align: center;
     margin-top: 2rem;
