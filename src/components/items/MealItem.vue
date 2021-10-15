@@ -17,18 +17,33 @@
 
 <script>
 import axios from 'axios'
+import Vue from 'vue'
+import VueSimpleAlert from 'vue-simple-alert'
+
+Vue.use(VueSimpleAlert)
 
 export default {
   name: 'MealtItem',
+  components: { VueSimpleAlert },
   props: {
     meal: Object
   },
   methods: {
     deleteNameMeal () {
-      axios.delete('http://localhost:8741/api/meals/' + this.meal.id)
-        .then(function (response) {
-          console.log(response.data)
+      this.$confirm(`Êtes-vous sûr de vouloir supprimer le plat ${this.meal.name} ?`).then(() => {
+        axios.delete('http://localhost:8741/api/meals/' + this.meal.id)
+          .then(function (response) {
+            console.log(response.data)
+          })
+        this.$fire({
+          title: 'Confirmation',
+          text: `Le plat ${this.meal.name} a bien été supprimé`,
+          type: 'success',
+          timer: 3000
+        }).then(r => {
+          console.log(r.value)
         })
+      })
     }
   }
 }
