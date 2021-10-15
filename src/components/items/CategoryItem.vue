@@ -10,9 +10,14 @@
 
 <script>
 import axios from 'axios'
+import Vue from 'vue'
+import VueSimpleAlert from 'vue-simple-alert'
+
+Vue.use(VueSimpleAlert)
 
 export default {
   name: 'CategoryItem',
+  components: { VueSimpleAlert },
   props: {
     category: Object
   },
@@ -21,10 +26,20 @@ export default {
       this.$router.go(-1)
     },
     remove () {
-      axios.delete('http://localhost:8741/api/categories/' + this.category.id)
-        .then(function (response) {
-          console.log(response.data)
+      this.$confirm(`Êtes-vous sûr de vouloir supprimer la catégorie ${this.category.name} ?`).then(() => {
+        axios.delete('http://localhost:8741/api/categories/' + this.category.id)
+          .then(function (response) {
+            console.log(response.data)
+          })
+        this.$fire({
+          title: 'Confirmation',
+          text: `La catégorie ${this.category.name} a bien été supprimé`,
+          type: 'success',
+          timer: 3000
+        }).then(r => {
+          console.log(r.value)
         })
+      })
     }
   }
 }
