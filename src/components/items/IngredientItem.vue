@@ -13,9 +13,14 @@
 
 <script>
 import axios from 'axios'
+import Vue from 'vue'
+import VueSimpleAlert from 'vue-simple-alert'
+
+Vue.use(VueSimpleAlert)
 
 export default {
   name: 'IngredientItem',
+  components: { VueSimpleAlert },
   props: {
     ingredient: Object
   },
@@ -24,10 +29,20 @@ export default {
       console.log(`update ${this.ingredient.id}`)
     },
     deleteIngredient: function () {
-      axios.delete('http://localhost:8741/api/ingredients/' + this.ingredient.id)
-        .then(function (response) {
-          console.log(response.data)
+      this.$confirm(`Êtes-vous sûr de vouloir supprimer l'ingrédient ${this.ingredient.name} ?`).then(() => {
+        axios.delete('http://localhost:8741/api/ingredients/' + this.ingredient.id)
+          .then(function (response) {
+            console.log(response.data)
+          })
+        this.$fire({
+          title: 'Confirmation',
+          text: `L'ingrédient' ${this.ingredient.name} a bien été supprimé`,
+          type: 'success',
+          timer: 3000
+        }).then(r => {
+          console.log(r.value)
         })
+      })
     }
   }
 }
