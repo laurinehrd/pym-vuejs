@@ -16,9 +16,14 @@
 
 <script>
 import axios from 'axios'
+import Vue from 'vue'
+import VueSimpleAlert from 'vue-simple-alert'
+
+Vue.use(VueSimpleAlert)
 
 export default {
   name: 'newIngredient',
+  components: { VueSimpleAlert },
   async mounted () {
     fetch('http://localhost:8741/api/categories').then((response) => {
       this.categories = response.json().then(json => {
@@ -38,13 +43,19 @@ export default {
       this.$router.push('/ingredients')
     },
     add () {
-      console.log(this.name)
-      console.log(this.idCat)
       axios.post('http://localhost:8741/api/ingredients', {
         name: this.name,
         category: this.idCat
       })
         .then(() => this.goBack())
+      this.$fire({
+        title: 'Ajouté',
+        text: `L'ingrédient ${this.name} a bien été ajouté !`,
+        type: 'success',
+        timer: 3000
+      }).then(r => {
+        console.log(r.value)
+      })
     }
   }
 }
