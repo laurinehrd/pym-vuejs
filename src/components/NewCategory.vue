@@ -12,19 +12,31 @@
 
 <script>
 import axios from 'axios'
+import Vue from 'vue'
+import VueSimpleAlert from 'vue-simple-alert'
+
+Vue.use(VueSimpleAlert)
 
 export default {
+  components: { VueSimpleAlert },
   methods: {
     goBack () {
     //   this.$router.push('/categories')
       this.$router.go(-1)
     },
     add () {
-      console.log(this.name)
       axios.post('http://localhost:8741/api/categories', {
         name: this.name
       })
         .then(() => this.goBack())
+      this.$fire({
+        title: 'Ajouté',
+        text: `La catégorie ${this.name} a bien été ajouté !`,
+        type: 'success',
+        timer: 3000
+      }).then(r => {
+        console.log(r.value)
+      })
     }
   }
 }
