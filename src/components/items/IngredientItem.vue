@@ -29,14 +29,14 @@ export default {
       console.log(`update ${this.ingredient.id}`)
     },
     deleteIngredient: function () {
-      this.$confirm(`Êtes-vous sûr de vouloir supprimer l'ingrédient ${this.ingredient.name} ?`).then(() => {
+      this.$confirm(`L'ingrédient sera supprimé définitivement`, `Êtes-vous sûr de vouloir supprimer l'ingrédient <span>${this.ingredient.name}</span> ?`, 'warning').then(() => {
         axios.delete('http://localhost:8741/api/ingredients/' + this.ingredient.id)
           .then(function (response) {
             console.log(response.data)
           })
         this.$fire({
           title: 'Confirmation',
-          text: `L'ingrédient' ${this.ingredient.name} a bien été supprimé`,
+          text: `L'ingrédient "${this.ingredient.name}" a bien été supprimé !`,
           type: 'success',
           timer: 3000
         }).then(r => {
