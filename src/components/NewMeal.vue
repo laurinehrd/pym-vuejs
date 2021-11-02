@@ -14,14 +14,18 @@
     </div>
     <div class="section-ing">
         <p class="title">Les ingrédients du plat</p>
-        <div class="item">
-            <p class="ingN">Ingrédient 1</p>
+
+        <div class="item" v-for="ingredient, idx in listIngredients" :key="idx">
+            <div class="firstline">
+              <p class="ingN">Ingrédient {{idx+1}}</p>
+              <button @click="delIngredient(idx)"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M29.3888 29.3887 10.5579 10.5578M29.3884 10.5578 10.5575 29.3887" stroke="#4F4F4F" stroke-linecap="round"/></svg></button>
+            </div>
             <div class="info">
                 <div class="name">
                     <p>Nom :</p>
                     <Dropdown
                         :options="ingredients"
-                        @selected="i=>currentIngredient=i"
+                        @selected="i=>ingredient.currentIngredient=i"
                         :disabled="false"
                         name="ingredients"
                         :maxItem="10"
@@ -29,15 +33,16 @@
                     </Dropdown>
                     <div class="name-category">
                       <p class="category">Catégorie : </p>
-                      <p>{{ currentIngredient.category? currentIngredient.category.name : ''}}</p>
+                      <p>{{ ingredient.currentIngredient.category? ingredient.currentIngredient.category.name : ''}}</p>
                     </div>
                 </div>
                 <div class="quantity">
                     <p>Quantité :</p>
-                    <quantity v-model="quantity"></quantity>
+                    <quantity v-model="ingredient.quantity"></quantity>
                 </div>
             </div>
         </div>
+        <div class="more"><button @click="addIngredient()"><svg width="33" height="33" viewBox="0 0 33 33" fill="none"><path d="M23.375 16.5H9.625M16.5 23.375V9.625" stroke="#F38E69" stroke-width="2" stroke-linecap="round"/><path clip-rule="evenodd" d="M16.5 30.25c7.5939 0 13.75-6.1561 13.75-13.75 0-7.594-6.1561-13.75-13.75-13.75-7.594 0-13.75 6.156-13.75 13.75 0 7.5939 6.156 13.75 13.75 13.75Z" stroke="#F38E69" stroke-width="2"/></svg></button></div>
     </div>
     <div class="btn">
         <button class="cancel" @click="goBack()">Annuler</button>
@@ -63,13 +68,20 @@ export default {
   data () {
     return {
       ingredients: [],
-      currentIngredient: {},
-      quantity: {number: 20, unit: 3}
+      listIngredients: [
+        {currentIngredient: {}, quantity: {number: 20, unit: 3}}
+      ]
     }
   },
   methods: {
     goBack () {
       this.$router.push('/')
+    },
+    addIngredient () {
+      this.listIngredients.push({currentIngredient: {}, quantity: {number: 20, unit: 3}})
+    },
+    delIngredient (idx) {
+      this.listIngredients.splice(idx, 1)
     }
   }
 }
@@ -136,12 +148,18 @@ export default {
     background: #FCE9E1;
     padding: 1rem;
     border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.firstline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .ingN {
     color: #F38E69;
     text-decoration: underline;
     font-weight: bold;
-    margin-top: 0;
+    margin: 0;
     font-size: 18px;
 }
 .info {
@@ -188,5 +206,16 @@ export default {
   .btn button.cancel:hover {
     border: 1px solid black;
     transition: ease-in-out all 0.2s;
+  }
+  .more {
+    text-align: center;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .more button svg {
+    stroke: #F38E69;
   }
 </style>
