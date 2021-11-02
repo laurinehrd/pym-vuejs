@@ -27,23 +27,6 @@ export default {
     }
   },
   methods: {
-    // addNewIng: function () {
-    //   const newIng = {
-    //     ingredients: 'test',
-    //     category_id: 2
-    //   }
-    //   fetch('http://localhost:8741/api/ingredients', {
-    //     method: 'POST',
-    //     body: JSON.stringify(newIng),
-    //     headers: {
-    //       'Content-type': 'application/json; charset=UTF-8'
-    //     }
-    //   })
-    //     .then(response => response.json())
-    //     .then(json => {
-    //       console.log(json)
-    //     })
-    // },
     goAdd () {
       this.$router.push('/newingredient')
     }
