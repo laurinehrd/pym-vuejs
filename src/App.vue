@@ -4,7 +4,7 @@
       <div class="logo">
         <h1>Pym</h1>
       </div>
-      <router-link to="/"><menu-item menu="Plats" nameIcon="meal"/></router-link>
+      <router-link to="/meals"><menu-item menu="Plats" nameIcon="meal"/></router-link>
       <router-link to="/ingredients"><menu-item menu="Ingrédients" nameIcon="ingredient"/></router-link>
       <router-link to="/categories"><menu-item menu="Catégories" nameIcon="category"/></router-link>
     </div>
@@ -30,6 +30,17 @@ export default {
 </script>
 
 <style>
+a.router-link-active .menu-item {
+  background-color: #F38E69;
+  color: white;
+  font-weight: bold;
+}
+a.router-link-active .menu-item svg.meal {
+  stroke: white;
+}
+a.router-link-active .menu-item svg.ingredient, a.router-link-active .menu-item svg.category {
+  fill: white;
+}
 body {
   margin: 1rem;
 }

@@ -14,17 +14,20 @@ export default new Router({
     {
       path: '/ingredients',
       name: 'IngredientSection',
-      component: IngredientSection
+      component: IngredientSection,
+      linkActiveClass: 'active'
     },
     {
       path: '/categories',
       name: 'CategorySection',
-      component: CategorySection
+      component: CategorySection,
+      linkActiveClass: 'active'
     },
     {
-      path: '/',
+      path: '/meals',
       name: 'MealSection',
-      component: MealSection
+      component: MealSection,
+      linkActiveClass: 'active'
     },
     {
       path: '/newingredient',
