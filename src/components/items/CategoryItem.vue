@@ -112,6 +112,6 @@ export default {
     border-bottom: 2px solid #F38E69;
     font-family: 'Gilroy';
     font-size: 18px;
-    margin: 1em 0;
+    margin: 0.9em 0;
   }
 </style>
