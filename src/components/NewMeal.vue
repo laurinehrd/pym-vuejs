@@ -18,7 +18,7 @@
         <div class="item" v-for="ingredient, idx in listIngredients" :key="idx">
             <div class="firstline">
               <p class="ingN">Ingrédient {{idx+1}}</p>
-              <button @click="delIngredient(idx)"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M29.3888 29.3887 10.5579 10.5578M29.3884 10.5578 10.5575 29.3887" stroke="#4F4F4F" stroke-linecap="round"/></svg></button>
+              <button @click="delIngredientContent(idx)"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M29.3888 29.3887 10.5579 10.5578M29.3884 10.5578 10.5575 29.3887" stroke="#4F4F4F" stroke-linecap="round"/></svg></button>
             </div>
             <div class="info">
                 <div class="name">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="more"><button @click="addIngredient()"><svg width="33" height="33" viewBox="0 0 33 33" fill="none"><path d="M23.375 16.5H9.625M16.5 23.375V9.625" stroke="#F38E69" stroke-width="2" stroke-linecap="round"/><path clip-rule="evenodd" d="M16.5 30.25c7.5939 0 13.75-6.1561 13.75-13.75 0-7.594-6.1561-13.75-13.75-13.75-7.594 0-13.75 6.156-13.75 13.75 0 7.5939 6.156 13.75 13.75 13.75Z" stroke="#F38E69" stroke-width="2"/></svg></button></div>
+        <div class="more"><button @click="addIngredientContent()"><svg width="33" height="33" viewBox="0 0 33 33" fill="none"><path d="M23.375 16.5H9.625M16.5 23.375V9.625" stroke="#F38E69" stroke-width="2" stroke-linecap="round"/><path clip-rule="evenodd" d="M16.5 30.25c7.5939 0 13.75-6.1561 13.75-13.75 0-7.594-6.1561-13.75-13.75-13.75-7.594 0-13.75 6.156-13.75 13.75 0 7.5939 6.156 13.75 13.75 13.75Z" stroke="#F38E69" stroke-width="2"/></svg></button></div>
     </div>
     <div class="btn">
         <button class="cancel" @click="goBack()">Annuler</button>
@@ -77,10 +77,10 @@ export default {
     goBack () {
       this.$router.push('/')
     },
-    addIngredient () {
+    addIngredientContent () {
       this.listIngredients.push({currentIngredient: {}, quantity: {number: 20, unit: 3}})
     },
-    delIngredient (idx) {
+    delIngredientContent (idx) {
       this.listIngredients.splice(idx, 1)
     }
   }
