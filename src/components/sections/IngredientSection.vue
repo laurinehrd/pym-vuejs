@@ -1,7 +1,9 @@
 <template>
     <div>
         <btn-add-new btn="un nouvel ingrédient" @click="goAdd()"/>
-        <ingredient-item v-for="i, idx in ingredients" :key="idx" :ingredient="i"/>
+        <div class="list-ingredients">
+          <ingredient-item class="item-ing" v-for="i, idx in ingredients" :key="idx" :ingredient="i"/>
+        </div>
     </div>
 </template>
 
@@ -33,3 +35,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.list-ingredients {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.item-ing {
+  width: 46%;
+  padding: 0 1rem;
+}
+</style>

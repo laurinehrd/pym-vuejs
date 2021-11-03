@@ -1,7 +1,9 @@
 <template>
     <div>
         <btn-add-new btn="une nouvelle catégorie" @click="goAdd()"/>
-        <category-item v-for="c, idx in categories" :key="idx" :category="c"/>
+        <div class="list-categories">
+          <category-item class="item-cat" v-for="c, idx in categories" :key="idx" :category="c"/>
+        </div>
     </div>
 </template>
 
@@ -33,3 +35,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.list-categories {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.item-cat {
+  width: 46%;
+  padding: 0 1rem;
+}
+</style>
