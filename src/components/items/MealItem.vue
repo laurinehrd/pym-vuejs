@@ -15,11 +15,14 @@
       </div>
     </div>
     <div class='showIngredients' v-if="details == true">
-      <div v-for="intermediaire, idx in intermediaires" :key="idx">
-        {{intermediaire.quantity}}
-        {{intermediaire.unity.name}}
-        {{intermediaire.ingredients.name}}
-      </div>
+      <p class="titledetails">Ingrédients</p>
+      <ul>
+        <li v-for="intermediaire, idx in intermediaires" :key="idx">
+          <span>{{intermediaire.quantity}}</span>
+          <span>{{intermediaire.unity.name}}</span>
+          <span>{{intermediaire.ingredients.name}}</span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -75,13 +78,15 @@ export default {
 </script>
 
 <style scoped>
+  .content {
+    margin: 1rem 0;
+  }
   .meal-item {
     background-color: #FCE9E1;
     padding: 1rem;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
-    margin: 1rem 0;
   }
   .name-meal {
     display: flex;
@@ -103,5 +108,24 @@ export default {
   svg {
     padding: 0 0.5rem;
     cursor: pointer;
+  }
+  .showIngredients {
+    background-color: #FEF6F3;
+    padding: 1.5rem;
+    margin-top: -6px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  .titledetails {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #F38E69;
+    padding-bottom: 1rem;
+  }
+  ul {
+    line-height: 25px;
+  }
+  .showIngredients p, ul {
+    margin: 0;
   }
 </style>
