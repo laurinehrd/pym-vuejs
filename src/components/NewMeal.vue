@@ -4,7 +4,7 @@
     <div class="line">
         <div class="nameMeal">
             <p class="title">Nom du plat</p>
-            <input class="bg" type="text">
+            <input class="bg" type="text" v-model="namemeal">
         </div>
         <div class="button-wrapper">
             <p class="title">Choisir une image</p>
@@ -14,7 +14,6 @@
     </div>
     <div class="section-ing">
         <p class="title">Les ingrédients du plat</p>
-
         <div class="item" v-for="ingredient, idx in listIngredients" :key="idx">
             <div class="firstline">
               <p class="ingN">Ingrédient {{idx+1}}</p>
@@ -29,7 +28,8 @@
                         :disabled="false"
                         name="ingredients"
                         :maxItem="10"
-                        placeholder="Nom de l'ingrédient">
+                        placeholder="Nom de l'ingrédient"
+                        v-model="nameingredient">
                     </Dropdown>
                     <div class="name-category">
                       <p class="category">Catégorie : </p>
@@ -46,7 +46,7 @@
     </div>
     <div class="btn">
         <button class="cancel" @click="goBack()">Annuler</button>
-        <button class="add">Ajouter</button>
+        <button class="add" @click="add()">Ajouter</button>
     </div>
   </div>
 </template>
@@ -75,13 +75,17 @@ export default {
   },
   methods: {
     goBack () {
-      this.$router.push('/')
+      this.$router.go(-1)
     },
     addIngredientContent () {
       this.listIngredients.push({currentIngredient: {}, quantity: {number: 20, unit: 3}})
     },
     delIngredientContent (idx) {
       this.listIngredients.splice(idx, 1)
+    },
+    add () {
+      console.log(this.namemeal)
+      console.log(this.nameingredient)
     }
   }
 }
