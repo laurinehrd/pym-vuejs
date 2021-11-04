@@ -6,11 +6,17 @@ import MealSection from '@/components/sections/MealSection'
 import NewIngredient from '@/components/NewIngredient'
 import NewCategory from '@/components/NewCategory'
 import NewMeal from '@/components/NewMeal'
+import Home from '@/components/Home'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home
+    },
     {
       path: '/ingredients',
       name: 'IngredientSection',
