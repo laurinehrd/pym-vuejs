@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     goBack () {
-      this.$router.push('/ingredients')
+      this.$router.go(-1)
     },
     add () {
       axios.post('http://localhost:8741/api/ingredients', {
