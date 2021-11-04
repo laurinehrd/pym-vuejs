@@ -2,7 +2,7 @@
   <div id="app">
     <div class="sidebar-menu">
       <div class="logo">
-        <h1>Pym</h1>
+        <h1 @click="goHome()">Pym</h1>
       </div>
       <router-link to="/meals"><menu-item menu="Plats" nameIcon="meal"/></router-link>
       <router-link to="/ingredients"><menu-item menu="Ingrédients" nameIcon="ingredient"/></router-link>
@@ -23,9 +23,15 @@ import MealItem from './components/items/MealItem.vue'
 import MenuItem from './components/items/MenuItem.vue'
 import NewIngredient from './components/NewIngredient.vue'
 import Quantity from './components/Quantity.vue'
+import Home from './components/Home.vue'
 export default {
-  components: { CategoryItem, BtnAddNew, IngredientItem, MealItem, MenuItem, CategorySection, NewIngredient, Quantity },
-  name: 'App'
+  components: { CategoryItem, BtnAddNew, IngredientItem, MealItem, MenuItem, CategorySection, NewIngredient, Quantity, Home },
+  name: 'App',
+  methods: {
+    goHome () {
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
@@ -43,6 +49,9 @@ a.router-link-active .menu-item svg.ingredient, a.router-link-active .menu-item 
 }
 body {
   margin: 1rem;
+}
+h1 {
+  cursor: pointer;
 }
 a {
   text-decoration: none;
