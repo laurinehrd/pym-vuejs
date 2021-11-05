@@ -68,7 +68,6 @@ export default {
         .then(function (response) {
           console.log(response.data)
         })
-      this.$router.go(0)
       this.$fire({
         title: 'Confirmation',
         text: `L'ingrédient "${this.ingredient.name}" a bien été modifié en "${this.newname}" avec la catégorie "${this.ingredient.category.name}" !`,
@@ -76,8 +75,9 @@ export default {
         timer: 5000
       }).then(r => {
         console.log(r.value)
+        this.edit = false
+        this.$router.go(0)
       })
-      this.edit = false
     },
     deleteIngredient () {
       this.$confirm(

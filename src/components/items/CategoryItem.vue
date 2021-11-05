@@ -56,9 +56,9 @@ export default {
         timer: 3000
       }).then(r => {
         console.log(r.value)
+        this.edit = false
+        this.$router.go(0)
       })
-      this.edit = false
-      this.$router.go(0)
     },
     deleteCategory () {
       this.$confirm(
