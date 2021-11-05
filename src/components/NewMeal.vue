@@ -46,7 +46,7 @@
     </div>
     <div class="btn">
         <button class="cancel" @click="goBack()">Annuler</button>
-        <button class="add" @click="add()">Ajouter</button>
+        <button class="add" @click="addMeal()">Ajouter</button>
     </div>
   </div>
 </template>
@@ -54,13 +54,14 @@
 <script>
 import Dropdown from 'vue-simple-search-dropdown'
 import Quantity from './Quantity.vue'
+import axios from 'axios'
 
 export default {
   name: 'newMeal',
   components: { Dropdown, Quantity },
   async mounted () {
     fetch('http://localhost:8741/api/ingredients').then((response) => {
-      this.ingredients = response.json().then(json => {
+      response.json().then(json => {
         this.ingredients = json['hydra:member']
       })
     })
@@ -70,7 +71,9 @@ export default {
       ingredients: [],
       listIngredients: [
         {currentIngredient: {}, quantity: {number: 20, unit: 3}}
-      ]
+      ],
+      namemeal: '',
+      nameingredient: ''
     }
   },
   methods: {
@@ -83,9 +86,26 @@ export default {
     delIngredientContent (idx) {
       this.listIngredients.splice(idx, 1)
     },
-    add () {
-      console.log(this.namemeal)
-      console.log(this.nameingredient)
+    addMeal () {
+      axios.post('http://localhost:8741/api/meals', {
+        name: this.namemeal,
+        intermediaires: this.listIngredients.map(i => {
+          return {
+            ingredients: i.currentIngredient['@id'],
+            quantity:	i.quantity.number,
+            unity: i.quantity.unit
+          }
+        })
+      })
+        .then(() => this.goBack())
+      this.$fire({
+        title: 'Ajouté',
+        text: `Ajouté avec succès`,
+        type: 'success',
+        timer: 3000
+      }).then(r => {
+        console.log(r.value)
+      })
     }
   }
 }
