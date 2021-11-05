@@ -70,7 +70,7 @@ export default {
     return {
       ingredients: [],
       listIngredients: [
-        {currentIngredient: {}, quantity: {number: 20, unit: 3}}
+        {currentIngredient: {}, quantity: {number: 2, unit: 4}}
       ],
       namemeal: '',
       nameingredient: ''
@@ -81,7 +81,7 @@ export default {
       this.$router.go(-1)
     },
     addIngredientContent () {
-      this.listIngredients.push({currentIngredient: {}, quantity: {number: 20, unit: 3}})
+      this.listIngredients.push({currentIngredient: {}, quantity: {number: 2, unit: 4}})
     },
     delIngredientContent (idx) {
       this.listIngredients.splice(idx, 1)
