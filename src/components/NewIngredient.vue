@@ -50,7 +50,7 @@ export default {
         .then(() => this.goBack())
       this.$fire({
         title: 'Ajouté',
-        text: `L'ingrédient ${this.name} a bien été ajouté !`,
+        text: `L'ingrédient "${this.name}" a bien été ajouté !`,
         type: 'success',
         timer: 3000
       }).then(r => {

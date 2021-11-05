@@ -92,7 +92,7 @@ export default {
         intermediaires: this.listIngredients.map(i => {
           return {
             ingredients: i.currentIngredient['@id'],
-            quantity:	i.quantity.number,
+            quantity: i.quantity.number,
             unity: i.quantity.unit
           }
         })
@@ -100,7 +100,7 @@ export default {
         .then(() => this.goBack())
       this.$fire({
         title: 'Ajouté',
-        text: `Ajouté avec succès`,
+        text: `Le plat "${this.namemeal}" a bien été ajouté !`,
         type: 'success',
         timer: 3000
       }).then(r => {

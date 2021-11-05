@@ -54,23 +54,28 @@ export default {
     }
   },
   methods: {
-    deleteNameMeal: function () {
-      this.$confirm(`Êtes-vous sûr de vouloir supprimer le plat ${this.meal.name} ?`).then(() => {
+    deleteNameMeal () {
+      this.$confirm(
+        `Cela entraînera également la suppression des ingrédients liés à ce plat, aucun retour en arrière ne sera possible.`,
+        `Êtes-vous sûr de vouloir supprimer le plat <span>${this.meal.name}</span> ?`,
+        'warning'
+      ).then(() => {
         axios.delete('http://localhost:8741/api/meals/' + this.meal.id)
           .then(function (response) {
             console.log(response.data)
           })
         this.$fire({
           title: 'Confirmation',
-          text: `Le plat ${this.meal.name} a bien été supprimé`,
+          text: `Le plat "${this.meal.name}" a bien été supprimé !`,
           type: 'success',
           timer: 3000
         }).then(r => {
           console.log(r.value)
+          this.$router.go(0)
         })
       })
     },
-    showIngredients: function () {
+    showIngredients () {
       this.details = !this.details
     }
   }
