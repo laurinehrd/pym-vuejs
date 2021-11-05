@@ -6,8 +6,8 @@
     <ul>
         <li>Vérifie d'abord que tous les ingrédients de ton plat sont disponibles dans la <span @click="listIng()">liste des ingrédients</span>.</li>
         <li>Si non, <span @click="addIng()">créer un nouvel ingrédient</span>. Il te faudra aussi renseigner la catégorie à laquelle ton ingrédient sera rattaché, si cette catégorie n'existe pas encore, il te faudra d'abord ajouter <span @click="addCat()"> une nouvelle catégorie</span>.</li>
-        <li>Maintenant que tous tes ingrédients et catégories sont disponibles, tu peux <span @click="addMeal()">créer ton plat</span>. Il te suffit de donner un nom à ton nouveau plat, puis pour chaque ingrédient tu as juste à sélectionner le nom de l'ingrédient dans la liste déroulante, et d'indiquer sa quantité avec son unité de valeur.</li>
-        <li>Tu ajoutes ton nouveau plat, et tadaaam il est disponible ! Tu n'as plus qu'à aller le sélectionner depuis l'application mobile en lui choisissant le meilleur jour pour le déguster !</li>
+        <li>Maintenant que tous tes ingrédients et catégories sont disponibles, tu peux <span @click="addMeal()">créer ton plat</span>. Il te suffit de donner un nom à ton nouveau plat, puis pour chaque ingrédient tu as juste à sélectionner le nom de l'ingrédient dans la liste déroulante, et indiquer sa quantité avec son unité de valeur.</li>
+        <li>Tu ajoutes ton nouveau plat, et tadaam il est disponible ! Tu n'as plus qu'à aller le sélectionner depuis l'application mobile en lui attribuant un jour pour le déguster !</li>
     </ul>
   </div>
 </template>
