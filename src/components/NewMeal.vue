@@ -27,7 +27,7 @@
                         @selected="i=>ingredient.currentIngredient=i"
                         :disabled="false"
                         name="ingredients"
-                        :maxItem="10"
+                        :maxItem="30"
                         placeholder="Nom de l'ingrédient"
                         v-model="nameingredient">
                     </Dropdown>
