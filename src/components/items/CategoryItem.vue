@@ -47,19 +47,17 @@ export default {
       axios.put('http://localhost:8741/api/categories/' + this.category.id, {
         name: this.newname
       })
-        .then(function (response) {
+        .then((response) => {
           console.log(response.data)
+          this.edit = false
+          this.$fire({
+            title: 'Confirmation',
+            text: `La catégorie "${this.category.name}" a bien été modifié en "${this.newname}" !`,
+            type: 'success',
+            timer: 3000
+          })
+          this.$emit('onupdate', response.data)
         })
-      this.$fire({
-        title: 'Confirmation',
-        text: `La catégorie "${this.category.name}" a bien été modifié en "${this.newname}" !`,
-        type: 'success',
-        timer: 3000
-      }).then(r => {
-        console.log(r.value)
-        this.edit = false
-        this.$router.go(0)
-      })
     },
     deleteCategory () {
       this.$confirm(
@@ -68,17 +66,24 @@ export default {
         'warning'
       ).then(() => {
         axios.delete('http://localhost:8741/api/categories/' + this.category.id)
-          .then(function (response) {
+          .then((response) => {
             console.log(response.data)
+            this.$fire({
+              title: 'Confirmation',
+              text: `La catégorie "${this.category.name}" a bien été supprimé !`,
+              type: 'success',
+              timer: 3000
+            })
+            this.$emit('ondelete')
           })
-        this.$fire({
-          title: 'Confirmation',
-          text: `La catégorie "${this.category.name}" a bien été supprimé !`,
-          type: 'success',
-          timer: 3000
-        }).then(r => {
-          console.log(r.value)
-        })
+          .catch((error) => {
+            this.$fire({
+              title: 'Erreur',
+              text: `La catégorie "${this.category.name}" a bien été supprimé !`,
+              type: 'success',
+              timer: 3000
+            })
+          })
       })
     }
   }
