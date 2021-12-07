@@ -2,7 +2,7 @@
     <div>
         <btn-add-new btn="un nouvel ingrédient" @click="goAdd()"/>
         <div class="list-ingredients">
-          <ingredient-item class="item-ing" v-for="i, idx in ingredients" :key="idx" :ingredient="i"/>
+          <ingredient-item class="item-ing" v-for="i, idx in ingredients" :key="idx" :ingredient="i" @onupdate="updateIngredient($event)"/>
         </div>
     </div>
 </template>
@@ -10,6 +10,7 @@
 <script>
 import IngredientItem from '../items/IngredientItem.vue'
 import BtnAddNew from '../BtnAddNew.vue'
+import Vue from 'vue'
 
 export default {
   components: {
@@ -31,6 +32,10 @@ export default {
   methods: {
     goAdd () {
       this.$router.push('/newingredient')
+    },
+    updateIngredient (newing) {
+      const i = this.ingredients.findIndex(ing => ing.id === newing.id)
+      Vue.set(this.ingredients, i, newing)
     }
   }
 }

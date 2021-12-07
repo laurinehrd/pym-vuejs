@@ -65,19 +65,17 @@ export default {
         name: this.newname,
         category: this.newcategory
       })
-        .then(function (response) {
+        .then((response) => {
           console.log(response.data)
+          this.edit = false
+          this.$fire({
+            title: 'Confirmation',
+            text: `L'ingrédient "${this.ingredient.name}" a bien été modifié en "${this.newname}" avec la catégorie "${this.newcategory}" !`,
+            type: 'success',
+            timer: 3000
+          })
+          this.$emit('onupdate', response.data)
         })
-      this.$fire({
-        title: 'Confirmation',
-        text: `L'ingrédient "${this.ingredient.name}" a bien été modifié en "${this.newname}" avec la catégorie "${this.newcategory}" !`,
-        type: 'success',
-        timer: 3000
-      }).then(r => {
-        console.log(r.value)
-        this.edit = false
-        // this.$router.go(0)
-      })
     },
     deleteIngredient () {
       this.$confirm(
