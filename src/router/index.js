@@ -7,6 +7,7 @@ import NewIngredient from '@/components/NewIngredient'
 import NewCategory from '@/components/NewCategory'
 import NewMeal from '@/components/NewMeal'
 import Home from '@/components/Home'
+import UpdateMeal from '@/components/UpdateMeal'
 
 Vue.use(Router)
 
@@ -49,6 +50,12 @@ export default new Router({
       path: '/newmeal',
       name: 'NewMeal',
       component: NewMeal
+    },
+    {
+      path: '/updatemeal/:id',
+      name: 'UpdateMeal',
+      component: UpdateMeal,
+      props: route => ({ id: parseInt(route.params.id) })
     }
   ]
 })
