@@ -94,6 +94,14 @@ export default {
             })
             this.$emit('ondelete')
           })
+          .catch(_error => {
+            this.$fire({
+              title: 'Erreur',
+              text: `L'ingrédient' "${this.ingredient.name}" n'a pas pu être supprimé`,
+              type: 'error',
+              timer: 5000
+            })
+          })
       })
     }
   }
