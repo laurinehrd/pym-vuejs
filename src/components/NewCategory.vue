@@ -19,6 +19,11 @@ Vue.use(VueSimpleAlert)
 
 export default {
   components: { VueSimpleAlert },
+  data () {
+    return {
+      name: ''
+    }
+  },
   methods: {
     goBack () {
     //   this.$router.push('/categories')
