@@ -60,7 +60,7 @@ export default {
       console.log(this.meal.id)
       console.log(this.meal.name)
       console.log(this.meal.intermediaires[0])
-      this.$router.push('/updatemeal')
+      this.$router.push('/updatemeal/' + this.meal.id)
     },
     deleteNameMeal () {
       this.$confirm(
