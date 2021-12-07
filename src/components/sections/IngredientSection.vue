@@ -2,7 +2,7 @@
     <div>
         <btn-add-new btn="un nouvel ingrédient" @click="goAdd()"/>
         <div class="list-ingredients">
-          <ingredient-item class="item-ing" v-for="i, idx in ingredients" :key="idx" :ingredient="i" @onupdate="updateIngredient($event)"/>
+          <ingredient-item class="item-ing" v-for="i, idx in ingredients" :key="idx" :ingredient="i" @ondelete="deleteIngredient(i)" @onupdate="updateIngredient($event)"/>
         </div>
     </div>
 </template>
@@ -32,6 +32,10 @@ export default {
   methods: {
     goAdd () {
       this.$router.push('/newingredient')
+    },
+    deleteIngredient (i) {
+      const j = this.ingredients.findIndex(ing => ing.id === i.id)
+      this.ingredients.splice(j, 1)
     },
     updateIngredient (newing) {
       const i = this.ingredients.findIndex(ing => ing.id === newing.id)

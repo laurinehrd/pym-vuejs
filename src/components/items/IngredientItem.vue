@@ -84,17 +84,16 @@ export default {
         'warning'
       ).then(() => {
         axios.delete('http://localhost:8741/api/ingredients/' + this.ingredient.id)
-          .then(function (response) {
+          .then((response) => {
             console.log(response.data)
+            this.$fire({
+              title: 'Confirmation',
+              text: `L'ingrédient "${this.ingredient.name}" a bien été supprimé !`,
+              type: 'success',
+              timer: 3000
+            })
+            this.$emit('ondelete')
           })
-        this.$fire({
-          title: 'Confirmation',
-          text: `L'ingrédient "${this.ingredient.name}" a bien été supprimé !`,
-          type: 'success',
-          timer: 3000
-        }).then(r => {
-          console.log(r.value)
-        })
       })
     }
   }
