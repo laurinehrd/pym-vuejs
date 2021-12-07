@@ -32,7 +32,8 @@ export default {
   },
   data () {
     return {
-      edit: false
+      edit: false,
+      newname: ''
     }
   },
   methods: {
