@@ -57,12 +57,15 @@ export default {
       this.details = !this.details
     },
     updateMeal () {
+      console.log(this.meal.id)
+      console.log(this.meal.name)
+      console.log(this.meal.intermediaires[0])
       this.$router.push('/updatemeal')
     },
     deleteNameMeal () {
       this.$confirm(
-        `Cela entraînera également la suppression des ingrédients liés à ce plat, aucun retour en arrière ne sera possible.`,
-        `Êtes-vous sûr de vouloir supprimer le plat <span>${this.meal.name}</span> ?`,
+        `Êtes-vous vraiment sûr de vouloir supprimer le plat "${this.meal.name}" ?`,
+        `La supression du plat entraînera également la suppression des ingrédients liés à ce plat, aucun retour en arrière ne sera possible.`,
         'warning'
       ).then(() => {
         axios.delete('http://localhost:8741/api/meals/' + this.meal.id)
