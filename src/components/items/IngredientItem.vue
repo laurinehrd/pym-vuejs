@@ -13,9 +13,8 @@
   <div class="ingredient-item" v-if="edit == true">
       <div class="textupdated">
         <input type="text" :placeholder="`${ ingredient.name }`" v-model="newname"/>
-        <select name="category" v-model="newcategory">
-          <option selected>{{ ingredient.category.name }}</option>
-          <option v-for="c, idx in categories" :key="idx" :category="c" :value="c['@id']">{{ c.name }}</option>
+        <select name="category" v-model="newcategory" >
+          <option v-for="c, idx in categories" :key="idx" :value="c['@id']">{{ c.name }}</option>
         </select>
       </div>
       <div class="icon-action">
@@ -48,7 +47,10 @@ export default {
   },
   data () {
     return {
-      edit: false
+      edit: false,
+      newname: '',
+      newcategory: this.ingredient.category['@id'],
+      categories: []
     }
   },
   methods: {
@@ -59,8 +61,6 @@ export default {
       this.edit = false
     },
     putIngredient () {
-      console.log(this.newname)
-      console.log(this.newcategory)
       axios.put('http://localhost:8741/api/ingredients/' + this.ingredient.id, {
         name: this.newname,
         category: this.newcategory
@@ -70,13 +70,13 @@ export default {
         })
       this.$fire({
         title: 'Confirmation',
-        text: `L'ingrédient "${this.ingredient.name}" a bien été modifié en "${this.newname}" avec la catégorie "${this.ingredient.category.name}" !`,
+        text: `L'ingrédient "${this.ingredient.name}" a bien été modifié en "${this.newname}" avec la catégorie "${this.newcategory}" !`,
         type: 'success',
-        timer: 5000
+        timer: 3000
       }).then(r => {
         console.log(r.value)
         this.edit = false
-        this.$router.go(0)
+        // this.$router.go(0)
       })
     },
     deleteIngredient () {
