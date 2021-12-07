@@ -1,7 +1,7 @@
 <template>
   <div>
       <btn-add-new btn="un nouveau plat" @click="goAdd()"/>
-      <meal-item v-for="m, idx in meals" :key="idx" :meal="m"/>
+      <meal-item v-for="m, idx in meals" :key="idx" :meal="m" @ondelete="deleteMeal($event)"/>
   </div>
 </template>
 
@@ -29,6 +29,10 @@ export default {
   methods: {
     goAdd () {
       this.$router.push('/newmeal')
+    },
+    deleteMeal (m) {
+      const i = this.meals.findIndex(meal => meal.id === m.id)
+      this.meals.splice(i, 1)
     }
   }
 }

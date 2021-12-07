@@ -71,16 +71,22 @@ export default {
         axios.delete('http://localhost:8741/api/meals/' + this.meal.id)
           .then(function (response) {
             console.log(response.data)
+            this.$fire({
+              title: 'Confirmation',
+              text: `Le plat "${this.meal.name}" a bien été supprimé !`,
+              type: 'success',
+              timer: 3000
+            })
+            this.$emit('ondelete', response.data)
           })
-        this.$fire({
-          title: 'Confirmation',
-          text: `Le plat "${this.meal.name}" a bien été supprimé !`,
-          type: 'success',
-          timer: 3000
-        }).then(r => {
-          console.log(r.value)
-          this.$router.go(0)
-        })
+          .catch((_error) => {
+            this.$fire({
+              title: 'Erreur',
+              text: `Le plat "${this.meal.name}" n'a pas pu être supprimé`,
+              type: 'error',
+              timer: 5000
+            })
+          })
       })
     }
   }
