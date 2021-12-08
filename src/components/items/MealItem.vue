@@ -57,9 +57,6 @@ export default {
       this.details = !this.details
     },
     updateMeal () {
-      console.log(this.meal.id)
-      console.log(this.meal.name)
-      console.log(this.meal.intermediaires[0])
       this.$router.push('/updatemeal/' + this.meal.id)
     },
     deleteNameMeal () {
@@ -69,7 +66,7 @@ export default {
         'warning'
       ).then(() => {
         axios.delete('http://localhost:8741/api/meals/' + this.meal.id)
-          .then(function (response) {
+          .then((response) => {
             console.log(response.data)
             this.$fire({
               title: 'Confirmation',
