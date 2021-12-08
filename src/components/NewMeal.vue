@@ -6,11 +6,11 @@
             <p class="title">Nom du plat</p>
             <input class="bg" type="text" v-model="namemeal">
         </div>
-        <div class="button-wrapper">
+        <!-- <div class="button-wrapper">
             <p class="title">Choisir une image</p>
             <div class="label">Importer</div>
             <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File">
-        </div>
+        </div> -->
     </div>
     <div class="section-ing">
         <p class="title">Les ingrédients du plat</p>
@@ -70,7 +70,7 @@ export default {
     return {
       ingredients: [],
       listIngredients: [
-        {currentIngredient: {}, quantity: {number: 2, unit: 4}}
+        {currentIngredient: {}, quantity: {number: 2, unit: null}}
       ],
       namemeal: '',
       nameingredient: ''
@@ -81,7 +81,7 @@ export default {
       this.$router.go(-1)
     },
     addIngredientContent () {
-      this.listIngredients.push({currentIngredient: {}, quantity: {number: 2, unit: 4}})
+      this.listIngredients.push({currentIngredient: {}, quantity: {number: 2, unit: null}})
     },
     delIngredientContent (idx) {
       this.listIngredients.splice(idx, 1)
@@ -97,15 +97,15 @@ export default {
           }
         })
       })
-        .then(() => this.goBack())
-      this.$fire({
-        title: 'Ajouté',
-        text: `Le plat "${this.namemeal}" a bien été ajouté !`,
-        type: 'success',
-        timer: 3000
-      }).then(r => {
-        console.log(r.value)
-      })
+        .then(() => {
+          this.goBack()
+          this.$fire({
+            title: 'Ajouté',
+            text: `Le plat "${this.namemeal}" a bien été ajouté !`,
+            type: 'success',
+            timer: 3000
+          })
+        })
     }
   }
 }
