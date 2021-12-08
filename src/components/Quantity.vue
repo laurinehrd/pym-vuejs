@@ -2,7 +2,7 @@
   <div class="quantity">
       <input class="number" type="number" id="quantity" name="quantity" min="1" max="900" :value='value.number' @input="$emit('input', {...value, number:parseInt($event.target.value)})">
       <select class="unity" name="unity" id="unity" :value='value.unit' @change="$emit('input', {number:value.number, unit: $event.target.value})">
-        <option v-for="u, idx in unities" :key="idx" :unity="u" :value="u['@id']">{{ u.name }}</option>
+        <option v-for="u, idx in unities" :key="idx" :unity="u" :value="u['@id']" :selected="value.unit===u['@id']">{{ u.name }}</option>
     </select>
   </div>
 </template>
@@ -14,6 +14,10 @@ export default {
     fetch('http://localhost:8741/api/unities').then((response) => {
       this.unities = response.json().then(json => {
         this.unities = json['hydra:member']
+        const unitydefault = this.unities[0]['@id']
+        if (this.value.unit == null) {
+          this.$emit('input', {number: this.value.number, unit: unitydefault})
+        }
       })
     })
   },
