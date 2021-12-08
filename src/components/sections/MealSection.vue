@@ -1,7 +1,7 @@
 <template>
   <div>
       <btn-add-new btn="un nouveau plat" @click="goAdd()"/>
-      <meal-item v-for="m, idx in meals" :key="idx" :meal="m" @ondelete="deleteMeal($event)"/>
+      <meal-item v-for="m, idx in meals" :key="idx" :meal="m" @ondelete="deleteMeal(m)"/>
   </div>
 </template>
 
