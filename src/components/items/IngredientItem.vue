@@ -70,7 +70,7 @@ export default {
           this.edit = false
           this.$fire({
             title: 'Confirmation',
-            text: `L'ingrédient "${this.ingredient.name}" a bien été modifié en "${this.newname}" avec la catégorie "${this.newcategory}" !`,
+            text: `L'ingrédient "${this.ingredient.name}" a bien été modifié en "${this.newname}" !`,
             type: 'success',
             timer: 3000
           })
