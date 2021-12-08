@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Modifier le plat ""</h2>
+    <h2>Modifier le plat "{{this.namemeal}}"</h2>
     <div class="line">
         <div class="nameMeal">
             <p class="title">Nom du plat</p>
@@ -110,6 +110,24 @@ export default {
           }
         })
       })
+        .then((response) => {
+          console.log(response.data)
+          this.goBack()
+          this.$fire({
+            title: 'Confirmation',
+            text: `Le plat "${this.namemeal}" a bien été modifié !`,
+            type: 'success',
+            timer: 3000
+          })
+        })
+        .catch((_error) => {
+          this.$fire({
+            title: 'Erreur',
+            text: `Le plat "${this.namemeal}" n'a pas pu être modifié`,
+            type: 'error',
+            timer: 5000
+          })
+        })
     }
   }
 }
